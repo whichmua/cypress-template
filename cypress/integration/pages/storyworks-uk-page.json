@@ -1,0 +1,6 @@
+{
+  "STORYWORKS_PAGE": ".Hero_Hero__screenSize__3HPaW",
+  "STORYWORKS_ERROR_PAGE": ".page-content-wrapper",
+  "STORYWORKS_BRANDED": ".undefined > :nth-child(1) > p",
+  "STORYWORKS_CUSTOM": ".undefined > :nth-child(3) > p"
+}

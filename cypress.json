@@ -1,0 +1,16 @@
+{
+  "env": {
+    "TAGS": "not @ignore"
+  },
+  "chromeWebSecurity": false,
+  "watchForFileChanges": false,
+  "viewportHeight": 720,
+  "viewportWidth": 1280,
+  "videoUploadOnPasses": false,
+  "defaultCommandTimeout": 20000,
+  "ignoreTestFiles": [
+    "*.js",
+    "*.md"
+  ],
+  "projectId": "hmquz5"
+}
