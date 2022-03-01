@@ -20,4 +20,4 @@ The file 'package.json' contains the commands to run scripts, and these are all 
 <br>
 <br>
 <br>
-*Last updated: 21th February 2022*
+*Last updated: 21st February 2022*
