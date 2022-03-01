@@ -1,13 +1,13 @@
-const reporter = require('cucumber-html-reporter');
-const fs = require('fs-extra')
-const path = require('path')
-const chalk = require('chalk')
+import reporter from 'cucumber-html-reporter'
+import fs from 'fs-extra'
+import path from 'path'
+import chalk from 'chalk'
 
-const cucumberJsonDir = 'test-results/cypress/JSON/'
+const cucumberJsonDir = 'report/JSON/'
 const cucumberReportFileMap = {}
 const cucumberReportMap = {}
 const jsonIndentLevel = 2
-const htmlReportDir = 'test-results/cypress/HTML/'
+const htmlReportDir = 'report/HTML/'
 const screenshotsDir = './cypress/screenshots'
 
 getCucumberReportMaps()
@@ -109,9 +109,9 @@ function generateReport() {
     const options = {
         brandTitle: 'Report',
         columnLayout: 1,
-        jsonDir: 'test-results/cypress/JSON',
+        jsonDir: 'report/JSON',
         launchReport: false,
-        output: 'test-results/cypress/HTML/cucumber_report.html',
+        output: 'report/HTML/cucumber_report.html',
         reportSuiteAsScenarios: true,
         scenarioTimestamp: true,
         theme: 'bootstrap'

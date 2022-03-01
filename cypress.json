@@ -7,10 +7,9 @@
   "viewportHeight": 720,
   "viewportWidth": 1280,
   "videoUploadOnPasses": false,
-  "defaultCommandTimeout": 20000,
+  "defaultCommandTimeout": 5000,
   "ignoreTestFiles": [
     "*.js",
     "*.md"
-  ],
-  "projectId": "hmquz5"
+  ]
 }

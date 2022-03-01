@@ -1,8 +1,0 @@
-{
-  "VISIT_URL": "https://www.test.bbc.com/storyworks/cross-pilliars/home",
-  "RELATEDSERIES": ".RelatedSeries",
-  "RELATEDSERIES_HEADER": ".RelatedSeries-category",
-  "RELATEDSERIES_TITLE": ".RelatedSeries-title",
-  "RELATEDSERIES_PARTNERBAR": ".RelatedSeries-partnerBar",
-  "RELATEDSERIES_CARDIMAGE": ".RelatedSeries-cardImage"
-}
