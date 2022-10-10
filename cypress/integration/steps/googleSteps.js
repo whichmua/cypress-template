@@ -20,7 +20,7 @@ When(/^I search for "(.*)"$/, (text) => {
 });
 
 When(/^I click on the "(.*)" button$/, (text) => {
-  cy.contains(text).click();
+  cy.get('button').contains(text).click();
 });
 
 When(/^I should see "(.*)"$/, (text) => {

@@ -34,7 +34,7 @@ before(() => {
 beforeEach(() => {
   // cy.setLocalStorage('key', 'value');
   // cy.setCookie('key', 'value');
-  cy.restoreLocalStorage();
+  // cy.restoreLocalStorage();
 });
 
 afterEach(() => {
