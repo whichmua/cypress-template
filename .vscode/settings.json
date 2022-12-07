@@ -20,7 +20,6 @@
     "editor.folding": false,
     "editor.hideCursorInOverviewRuler": true,
     "editor.occurrencesHighlight": false,
-    "editor.renderIndentGuides": false,
     "editor.roundedSelection": false,
     "editor.selectionHighlight": true,
     "editor.scrollBeyondLastLine": false,
