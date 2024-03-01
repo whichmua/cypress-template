@@ -8,7 +8,7 @@ Given(/^I visit the "(.*)" homepage$/, (text) => {
 
   switch (text) {
   case 'Google':
-    url = googlePage.googleURL;
+    url = googlePage.googleURL();
     break;
   }
 
@@ -16,7 +16,7 @@ Given(/^I visit the "(.*)" homepage$/, (text) => {
 });
 
 When(/^I search for "(.*)"$/, (text) => {
-  cy.get(googlePage.searchBar).type(text+'{enter}');
+  googlePage.searchBar().type(text+'{enter}');
 });
 
 When(/^I click on the "(.*)" button$/, (text) => {
