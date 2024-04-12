@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "cypress:test": "yarn config:reports; $(npm bin)/cypress open --env 'TAGS=not @ignore'",
-    "cypress:all": "yarn config:reports; yarn delete:reports; ./node_modules/.bin/cypress-tags run -e TAGS='not @ignore' --browser chrome --headed; yarn report",
-    "report": "node .tools/exportHTMLReport.mjs",
-    "delete:reports": "rm -rf report/JSON/* || true; rm -rf report/HTML/* || true; rm -rf cypress/videos/features/* || true",
-    "config:reports": "mkdir -p report/{HTML,JSON} cypress/screenshots; cp '.tools/createTestFromScenario.js' 'node_modules/cypress-cucumber-preprocessor/lib/createTestFromScenario.js'"
+    "cypress:test": "$(npm bin)/cypress open --env 'TAGS=not @ignore'"
   },
   "dependencies": {
     "@babel/core": "^7.16.0",
@@ -16,14 +12,11 @@
     "@types/cypress-cucumber-preprocessor": "^4.0.1",
     "chalk": "^4.1.2",
     "cucumber": "^7.0.0-rc.0",
-    "cucumber-html-reporter": "^5.5.0",
     "cypress": "10.9.0",
     "cypress-cucumber-preprocessor": "^4.3.0",
-    "cypress-localstorage-commands": "^1.6.1",
     "eslint": "^8.9.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-jsonc": "^2.2.1",
-    "fs-extra": "^10.0.0"
+    "eslint-plugin-jsonc": "^2.2.1"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
