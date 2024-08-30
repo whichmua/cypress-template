@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "cypress:test": "yarn config:reports; $(npm bin)/cypress open --env 'TAGS=not @ignore'",
-    "cypress:all": "yarn config:reports; yarn delete:reports; ./node_modules/.bin/cypress-tags run -e TAGS='not @ignore' --browser chrome --headed; yarn report",
+    "cypress:test": "yarn config:reports; $(npm bin)/cypress open cypress open --e2e --browser=chrome --env 'TAGS=not @ignore'",
+    "cypress:all": "yarn config:reports; yarn delete:reports; ./node_modules/.bin/cypress-tags run -e TAGS='@Google and not @ignore' --browser chrome --headed; yarn report",
     "report": "node .tools/exportHTMLReport.mjs",
     "delete:reports": "rm -rf report/JSON/* || true; rm -rf report/HTML/* || true; rm -rf cypress/videos/features/* || true",
     "config:reports": "mkdir -p report/{HTML,JSON} cypress/screenshots; cp '.tools/createTestFromScenario.js' 'node_modules/cypress-cucumber-preprocessor/lib/createTestFromScenario.js'"

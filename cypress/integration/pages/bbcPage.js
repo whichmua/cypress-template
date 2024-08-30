@@ -1,6 +1,6 @@
 class googlePage {
   url () {
-    return 'https://www.google.co.uk';
+    return 'https://www.bbc.co.uk';
   }
 
   searchBar () {
