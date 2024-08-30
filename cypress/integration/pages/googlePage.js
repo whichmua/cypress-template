@@ -1,8 +1,4 @@
 class googlePage {
-  url () {
-    return 'https://www.google.co.uk';
-  }
-
   searchBar () {
     return cy.get('.gLFyf');
   }
