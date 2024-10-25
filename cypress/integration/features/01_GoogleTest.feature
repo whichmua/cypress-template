@@ -8,7 +8,8 @@ Feature: 01 Google Test
     Then I should see "<searchresult>"
 
     Examples:
-      | searchterm  | searchresult                |
-      | apple music | https://music.apple.com     |
-      | bbc news    | https://www.bbc.co.uk       |
-      | itv news    | https://www.microsoft.co.uk |
+      | searchterm  | searchresult            |
+      | apple music | https://music.apple.com |
+      | bbc news    | https://www.bbc.co.uk   |
+      # Note: The following test case is designed to demonstrate a failure within Cypress
+      | itv news | https://www.microsoft.co.uk |
