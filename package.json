@@ -8,7 +8,9 @@
     "config:reports": "mkdir -p report/{HTML,JSON} cypress/screenshots",
     "delete:reports": "rm -rf report/JSON/* || true; rm -rf report/HTML/* || true; rm -rf cypress/videos/features/* || true",
     "lint:gherkin": "gherkin-lint",
-    "report": "node .tools/exportHTMLReport.mjs"
+    "report": "node .tools/exportHTMLReport.mjs",
+    "husky:install": "husky install",
+    "lint:files": "lint-staged"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
@@ -36,6 +38,13 @@
     "eslint-plugin-jsonc": "^2.18.2",
     "gherkin-lint": "^4.2.4",
     "globals": "^15.13.0",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
