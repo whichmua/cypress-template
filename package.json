@@ -42,10 +42,6 @@
     "lint-staged": "^15.2.11"
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "eslint --fix",
-      "eslint --fix",
-      "git add"
-    ]
+    "*.{js,json}": ["eslint --fix"]
   }
 }
