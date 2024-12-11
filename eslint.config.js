@@ -51,6 +51,11 @@ module.exports = [
   // Cypress rules configuration
   {
     plugins: { cypress: pluginCypress },
+    languageOptions: {
+      globals: {
+        ...pluginCypress.configs.recommended.languageOptions.globals,
+      },
+    },
     rules: cypressRules,
   },
   // JSON rules configuration
