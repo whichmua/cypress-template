@@ -1,7 +1,7 @@
 @Google
 Feature: 01 Google Test
   
-  Scenario Outline: 01 Verify search bar - <searchterm>
+  Scenario Outline:
     Given I visit the "Google" homepage
     And I click on the "Accept all" button
     When I search for "<searchterm>"
