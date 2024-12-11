@@ -1,22 +1,28 @@
 const { defineConfig } = require('cypress');
+const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
+const addCucumberPreprocessorPlugin = require('@badeball/cypress-cucumber-preprocessor').addCucumberPreprocessorPlugin;
+const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild').createEsbuildPlugin;
 
 module.exports = defineConfig({
-  env: {
-    TAGS: 'not @ignore',
-  },
   chromeWebSecurity: false,
   watchForFileChanges: false,
   viewportHeight: 720,
   viewportWidth: 1280,
-  videoUploadOnPasses: false,
-  defaultCommandTimeout: 5000,
+  defaultCommandTimeout: 10000,
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
-    setupNodeEvents (on, config) {
-      return require('./cypress/plugins/index.js')(on, config);
+    async setupNodeEvents (on, config) {
+      const bundler = createBundler({
+        plugins: [createEsbuildPlugin(config)],
+      });
+
+      on('file:preprocessor', bundler);
+      await addCucumberPreprocessorPlugin(on, config);
+
+      return config;
     },
+    specPattern: 'cypress/integration/features/**/*.feature',
+    chromeWebSecurity: false,
     excludeSpecPattern: ['*.js', '*.md'],
-    specPattern: 'cypress/integration/**/*.feature',
+    experimentalMemoryManagement: true
   },
 });
