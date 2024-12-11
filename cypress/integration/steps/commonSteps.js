@@ -1,5 +1,4 @@
-/* global Given, When */
-
+import { Given, When } from '@badeball/cypress-cucumber-preprocessor';
 import PageUrls from '../../support/urls';
 
 Given(/^I visit the "(.*)" homepage$/, (text) => {

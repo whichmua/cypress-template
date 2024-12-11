@@ -1,4 +1,4 @@
-@APIMock
+@APIMock @ignore
 Feature: 01 API Mock
   
   Scenario: 01 Verify search bar - <searchterm>

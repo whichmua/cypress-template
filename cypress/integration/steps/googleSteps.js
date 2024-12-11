@@ -1,5 +1,4 @@
-/* global When */
-
+import { When } from '@badeball/cypress-cucumber-preprocessor';
 import googlePage from '../pages/googlePage';
 
 When(/^I search for "(.*)"$/, (text) => {
