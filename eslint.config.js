@@ -7,6 +7,7 @@ const globals = require('globals');
 const cypressRules = {
   ...pluginCypress.configs.recommended.rules,
   'cypress/no-unnecessary-waiting': 'off',
+  'cypress/unsafe-to-chain-command': 'off',
 };
 
 const jsoncRules = {
