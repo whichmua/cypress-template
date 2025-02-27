@@ -138,10 +138,16 @@ function generateReport () {
     return;
   }
 
-  const jsonFiles = fs.readdirSync(cucumberJsonDir).filter(file => file.endsWith('.json'));
+  const jsonFiles = fs.readdirSync(cucumberJsonDir)
+    .filter(file => file.endsWith('.json'))
+    .map(file => `${cucumberJsonDir}/${file}`)
+    .filter(file => {
+      const content = fs.readFileSync(file, 'utf8').trim();
+      return content.length > 2;
+    });
 
   if (jsonFiles.length === 0) {
-    console.error(`❌ ERROR: No valid Cucumber JSON files found in '${cucumberJsonDir}'.`);
+    console.info(chalk.yellow(`No valid Cucumber JSON files found in '${cucumberJsonDir}'. REPORT CANNOT BE CREATED!`));
     return;
   }
 
