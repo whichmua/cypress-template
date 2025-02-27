@@ -90,40 +90,37 @@ function addScreenshots () {
       }
     }
 
-    // console.log('DEBUG: feature variable type ->', typeof feature);
-    // console.log('DEBUG: feature value ->', feature);
-
     screenshots.forEach(screenshot => {
       const featureName = typeof feature === 'object' ? feature.name : feature;
       const featureData = cucumberReportMap[featureName];
+      // console.log('featureData', featureData);
 
       if (!featureData) {
         console.warn(chalk.yellow(`WARNING: No data found for feature '${featureName}'. Skipping.`));
         return;
       }
 
-      if (!featureData || !featureData[0]) {
-        console.warn(chalk.yellow(`WARNING: No data found for feature '${feature}'. Skipping.`));
-        return;
+      let featureTitle;
+      let scenarioName;
+
+      if (Array.isArray(featureData)) {
+        featureTitle = featureData[0]?.name || 'Unknown Feature';
+        scenarioName = featureData[0]?.elements?.[0]?.name || 'Unknown Scenario';
+      } else if (featureData && typeof featureData === 'object') {
+        featureTitle = featureData.name || 'Unknown Feature';
+        scenarioName = featureData.elements?.[0]?.name || 'Unknown Scenario';
+      } else {
+        console.error('featureData is not defined or is not a valid object/array.');
+        process.exit(1); // Stop execution if data is invalid
       }
-
-      const featureTitle = featureData[0].name;
-      const regex = /(?<=-- ).+?((?= \(example #\d+\))|(?= \(failed\))|(?=\.\w{3}))/g;
-      const match = screenshot.match(regex);
-
-      if (!match) {
-        console.warn(chalk.yellow(`WARNING: No matching scenario name found for screenshot '${screenshot}'. Skipping.`));
-        return;
-      }
-
-      const scenarioName = match[0];
 
       console.info(chalk.blue('\n    Adding screenshot(s) to HTML report for'));
       console.info(chalk.blue(`    '${featureTitle} - ${scenarioName}'`));
 
-      const myScenarios = featureData[0].elements.filter(
-        e => scenarioName.includes(e.name.replace(/["']/g, ''))
-      );
+      // Ensure featureData is an array before filtering
+      const myScenarios = Array.isArray(featureData[0]?.elements)
+        ? featureData[0].elements.filter(e => scenarioName.includes(e.name.replace(/["']/g, '')))
+        : [];
 
       if (!myScenarios.length) {
         console.warn(chalk.yellow(`WARNING: No matching scenario found for '${scenarioName}' in feature '${featureTitle}'. Skipping.`));
@@ -148,21 +145,24 @@ function addScreenshots () {
         if (!myStep) {
           return;
         }
-        const data = fs.readFileSync(
-          path.resolve(screenshot)
-        );
-        if (data) {
-          const base64Image = Buffer.from(data, 'binary').toString('base64');
-          if (!myStep.embeddings) {
-            myStep.embeddings = [];
+
+        try {
+          const data = fs.readFileSync(path.resolve(screenshot));
+          if (data) {
+            const base64Image = Buffer.from(data, 'binary').toString('base64');
+            if (!myStep.embeddings) {
+              myStep.embeddings = [];
+            }
             myStep.embeddings.push({ data: base64Image, mime_type: 'image/png' });
             foundFailedStep = true;
           }
+        } catch (error) {
+          console.error(`Error reading screenshot file: ${screenshot}`, error);
         }
       });
 
       fs.writeFileSync(
-        path.join(cucumberJsonDir, cucumberReportFileMap[feature]),
+        path.join(cucumberJsonDir, cucumberReportFileMap[featureName]), // Use featureName instead of feature
         JSON.stringify(featureData, null, jsonIndentLevel)
       );
     });
