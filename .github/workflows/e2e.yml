@@ -53,7 +53,7 @@ jobs:
         run: yarn install --frozen-lockfile --prod
 
       - name: Create directories
-        run: mkdir -p report/{HTML,JSON},cypress/screenshots
+        run: mkdir -p report/HTML report/JSON cypress/screenshots
       
       - name: Run Cypress tests
         id: cypress
