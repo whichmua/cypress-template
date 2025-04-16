@@ -6,11 +6,8 @@ Given(/^I visit the "(.*)" homepage$/, (text) => {
   var url;
 
   switch (text) {
-  case 'Google':
-    url = PageUrls.googlePage();
-    break;
-  case 'BBC':
-    url = PageUrls.bbcPage();
+  case 'DuckDuckGo':
+    url = PageUrls.duckDuckGoPage();
     break;
   }
 
@@ -23,13 +20,4 @@ When(/^I click on the "(.*)" button$/, (text) => {
 
 When(/^I should see "(.*)"$/, (text) => {
   cy.contains(text);
-});
-
-When(/^I mock the "(.*)" request$/, (requestName) => {
-  cy.intercept(`/${requestName}`, { fixture: `${requestName}.json` });
-  cy.reload();
-});
-
-When(/^I am on a "(.*)" domain$/, (domain) => {
-  cy.url().should('include', domain);
 });
