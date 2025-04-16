@@ -11,4 +11,4 @@ Feature: 01 Search Test
       | apple music | music.apple.com |
       | bbc         | bbc.com         |
       # Note: The following test case is designed to demonstrate a failure within Cypress
-      | itv news | https://www.microsoft.co.uk |
+      # | itv news | https://www.microsoft.co.uk |
