@@ -7,7 +7,7 @@ Given(/^I send a "(.*)" request to "(.*)"$/, (method, endpoint) => {
   cy.request({
     method: method,
     url: `${BASE_URL}${endpoint}`,
-    failOnStatusCode: false, // 👈 prevents test from failing on 4xx/5xx responses
+    failOnStatusCode: false,
   }).then((res) => {
     response = res;
   });
@@ -24,7 +24,7 @@ Then('the response should contain a list of products', () => {
 });
 
 Then('each product should have {string}, {string}, and {string}', (idField, nameField, priceField) => {
-  const parsedBody = JSON.parse(response.body); // 🔥 Parse once
+  const parsedBody = JSON.parse(response.body);
   parsedBody.products.forEach((product) => {
     expect(product).to.have.property(idField);
     expect(product).to.have.property(nameField);
